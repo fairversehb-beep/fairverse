@@ -29,39 +29,39 @@
                 <li class="nav-item"><a href="#roadmap" class="nav-link">路線圖</a></li>
                 <li class="nav-item"><a href="#community" class="nav-link">社區</a></li>
             </ul>
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+            <!-- 多语言切换器 -->
+<div class="language-switcher">
+    <button class="lang-btn" id="lang-toggle" aria-label="切换语言">
+        <span class="lang-code">EN</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/>
+        </svg>
+    </button>
+    <div class="lang-dropdown" id="lang-dropdown">
+        <a href=" " data-lang="en" class="lang-option">English</a >
+        <a href="#" data-lang="zh" class="lang-option">中文</a >
+    </div>
+</div>
 
-    <!-- 全屏英雄大圖區 -->
-    <section class="hero" id="home">
-        <div class="hero-background">
-            <div class="stars"></div>
-            <div class="gradient-overlay"></div>
+    <!-- 全屏英雄大圖區 - 中央聚焦式 -->
+<section class="hero" id="home">
+    <div class="hero-bg-canvas" id="hero-bg"></div>
+    <div class="gradient-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <span class="title-line" data-en="FairVerse: A Universe Built by You." data-zh="FairVerse：一个由你构筑的宇宙。">
+                FairVerse: A Universe Built by You.
+            </span>
+        </h1>
+        <p class="hero-description" data-en="The first truly open, fair, and user-owned virtual world platform. No gatekeepers, just pure creation." data-zh="首个真正开放、公平、用户拥有的虚拟世界平台。没有看门人，只有纯粹的创造。">
+            The first truly open, fair, and user-owned virtual world platform. No gatekeepers, just pure creation.
+        </p >
+        <div class="hero-cta">
+            <a href=" " class="btn btn-primary" data-en="Start Exploring" data-zh="开启探索">Start Exploring</a >
+            <a href="#vision" class="btn btn-secondary" data-en="Learn More" data-zh="了解更多">Learn More</a >
         </div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line">FairVerse</span>
-                <span class="title-subtitle">公平公開的虛擬世界平台</span>
-            </h1>
-            <p class="hero-description">
-                基於區塊鏈技術的去中心化元宇宙，賦予用戶真正的所有權與自由
-            </p>
-            <div class="hero-cta">
-                <a href="#coming-soon" class="btn btn-primary">探索未來</a>
-                <a href="#vision" class="btn btn-secondary">了解更多</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
-    </section>
-
-    <!-- 問題與解決方案對比區 -->
+    </div>
+</section>
     <section class="problem-solution" id="vision">
         <div class="container">
             <h2 class="section-title">傳統 vs FairVerse</h2>

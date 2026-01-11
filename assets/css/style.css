@@ -933,3 +933,41 @@ body {
         width: 100%;
     }
 }
+/* ===== 第一阶段：导航栏与英雄区增强样式 ===== */
+.language-switcher {
+    position: relative;
+    margin-left: 2rem;
+}
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+/* ... (此处为节省篇幅，省略中间部分，请务必粘贴我在上一条回复中提供的完整CSS代码块) ... */
+@media (max-width: 768px) {
+    .language-switcher {
+        margin-left: 1rem;
+        order: 3;
+    }
+    .lang-btn {
+        padding: 0.5rem 1rem;
+    }
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
