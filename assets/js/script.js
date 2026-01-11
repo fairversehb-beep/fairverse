@@ -1,241 +1,164 @@
-/**
- * FairVerse 官網 JavaScript
- * 處理導航、表單提交、滾動效果等交互功能
- */
+// assets/js/script.js - FairVerse 官网交互脚本
 
-(function() {
-    'use strict';
+// 1. 多语言切换功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取语言切换相关元素
+    const langToggle = document.getElementById('lang-toggle');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const langCodeSpan = document.querySelector('.lang-code');
+    
+    // 默认语言，尝试从本地存储读取，没有则默认为英文
+    let currentLang = localStorage.getItem('fairverse-lang') || 'en';
+    
+    // 初始化：根据保存的语言设置页面
+    updatePageLanguage(currentLang);
+    
+    // 点击“EN”按钮显示/隐藏下拉菜单
+    if (langToggle) {
+        langToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // 防止事件冒泡
+            langDropdown.classList.toggle('show');
+        });
+    }
+    
+    // 点击下拉菜单中的语言选项
+    document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            const selectedLang = this.getAttribute('data-lang');
+            
+            // 更新当前语言
+            currentLang = selectedLang;
+            
+            // 保存到浏览器本地存储
+            localStorage.setItem('fairverse-lang', selectedLang);
+            
+            // 更新按钮显示
+            langCodeSpan.textContent = selectedLang.toUpperCase();
+            
+            // 更新页面所有文本
+            updatePageLanguage(selectedLang);
+            
+            // 隐藏下拉菜单
+            langDropdown.classList.remove('show');
+        });
+    });
+    
+    // 点击页面其他地方时关闭下拉菜单
+    document.addEventListener('click', function() {
+        langDropdown.classList.remove('show');
+    });
+    
+    // 阻止下拉菜单内部的点击事件冒泡（防止触发document的点击事件）
+    langDropdown.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+    
+    // 核心函数：更新页面文本内容
+    function updatePageLanguage(lang) {
+        // 更新所有带有 data-en 和 data-zh 属性的元素
+        document.querySelectorAll('[data-en]').forEach(element => {
+            if (lang === 'zh') {
+                element.textContent = element.getAttribute('data-zh');
+            } else {
+                element.textContent = element.getAttribute('data-en');
+            }
+        });
+        
+        // 更新按钮文字（针对有 data-en/data-zh 的按钮）
+        document.querySelectorAll('.btn[data-en]').forEach(btn => {
+            if (lang === 'zh') {
+                btn.textContent = btn.getAttribute('data-zh');
+            } else {
+                btn.textContent = btn.getAttribute('data-en');
+            }
+        });
+        
+        // 更新页面标题（可选）
+        if (lang === 'zh') {
+            document.title = 'FairVerse - 公平公开的虚拟世界平台';
+        } else {
+            document.title = 'FairVerse - Fair and Open Virtual World Platform';
+        }
+        
+        // 更新按钮代码显示
+        if (langCodeSpan) {
+            langCodeSpan.textContent = lang.toUpperCase();
+        }
+        
+        console.log('Language switched to:', lang);
+    }
+});
 
-    // ============================================
-    // DOM 元素初始化
-    // ============================================
-    const navbar = document.getElementById('navbar');
+// 2. 导航栏移动端响应式菜单（如果之前没有的话）
+document.addEventListener('DOMContentLoaded', function() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const emailForm = document.getElementById('email-form');
-    const emailInput = document.getElementById('email-input');
-    const formMessage = document.getElementById('form-message');
-
-    // ============================================
-    // 導航欄滾動效果
-    // ============================================
-    let lastScroll = 0;
     
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        // 添加滾動後樣式
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        lastScroll = currentScroll;
-    });
-
-    // ============================================
-    // 移動端漢堡菜單切換
-    // ============================================
-    if (navToggle) {
+    if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-
-        // 點擊導航鏈接後關閉菜單
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            });
-        });
-
-        // 點擊外部區域關閉菜單
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = navbar.contains(event.target);
-            if (!isClickInsideNav && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            }
+            
+            // 切换汉堡菜单动画
+            const bars = this.querySelectorAll('.bar');
+            bars[0].style.transform = navMenu.classList.contains('active') ? 'rotate(45deg) translate(6px, 6px)' : 'none';
+            bars[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
+            bars[2].style.transform = navMenu.classList.contains('active') ? 'rotate(-45deg) translate(6px, -6px)' : 'none';
         });
     }
-
-    // ============================================
-    // 平滑滾動到錨點
-    // ============================================
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // 只處理錨點鏈接
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
+    
+    // 点击导航链接后关闭移动端菜单
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
                 
-                if (targetElement) {
-                    const navHeight = navbar.offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                // 重置汉堡菜单动画
+                const bars = navToggle.querySelectorAll('.bar');
+                bars[0].style.transform = 'none';
+                bars[1].style.opacity = '1';
+                bars[2].style.transform = 'none';
             }
         });
     });
+});
 
-    // ============================================
-    // 活動導航鏈接高亮
-    // ============================================
-    const sections = document.querySelectorAll('section[id]');
-    
-    function highlightActiveNav() {
-        const scrollY = window.pageYOffset;
-        const navHeight = navbar.offsetHeight;
+// 3. 导航栏滚动效果
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.style.backgroundColor = 'rgba(10, 14, 23, 0.95)';
+        navbar.style.backdropFilter = 'blur(10px)';
+    } else {
+        navbar.style.backgroundColor = 'rgba(10, 14, 23, 0.9)';
+    }
+});
+
+// 4. 表单提交处理（订阅表单）
+const emailForm = document.getElementById('email-form');
+if (emailForm) {
+    emailForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = document.getElementById('email-input');
+        const formMessage = document.getElementById('form-message');
         
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - navHeight - 100;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', highlightActiveNav);
-
-    // ============================================
-    // 郵箱訂閱表單處理
-    // ============================================
-    if (emailForm) {
-        emailForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = emailInput.value.trim();
-            
-            // 簡單的郵箱驗證
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (!email) {
-                showFormMessage('請輸入電子郵件地址', 'error');
-                return;
-            }
-            
-            if (!emailRegex.test(email)) {
-                showFormMessage('請輸入有效的電子郵件地址', 'error');
-                return;
-            }
-            
-            // 模擬表單提交（實際應用中應該發送到服務器）
-            showFormMessage('正在提交...', '');
-            
-            // 模擬 API 請求延遲
-            setTimeout(() => {
-                // 這裡應該替換為實際的 API 調用
-                // 例如：fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) })
-                
-                showFormMessage('感謝您的訂閱！我們會儘快與您聯繫。', 'success');
-                emailInput.value = '';
-                
-                // 3秒後清除消息
-                setTimeout(() => {
-                    formMessage.textContent = '';
-                    formMessage.className = 'form-message';
-                }, 3000);
-            }, 1000);
-        });
-    }
-
-    /**
-     * 顯示表單消息
-     * @param {string} message - 要顯示的消息
-     * @param {string} type - 消息類型：'success' 或 'error'
-     */
-    function showFormMessage(message, type) {
-        formMessage.textContent = message;
-        formMessage.className = 'form-message';
-        if (type) {
-            formMessage.classList.add(type);
-        }
-    }
-
-    // ============================================
-    // 滾動動畫（Intersection Observer）
-    // ============================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // 觀察需要動畫的元素
-    const animatedElements = document.querySelectorAll(
-        '.comparison-card, .tech-card, .economy-feature, .timeline-item'
-    );
-    
-    animatedElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(el);
-    });
-
-    // ============================================
-    // 頁面加載完成後的初始化
-    // ============================================
-    window.addEventListener('DOMContentLoaded', function() {
-        // 設置初始導航高亮
-        highlightActiveNav();
+        const email = emailInput.value.trim();
         
-        // 如果有哈希錨點，滾動到對應位置
-        if (window.location.hash) {
-            const targetId = window.location.hash.substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                setTimeout(() => {
-                    const navHeight = navbar.offsetHeight;
-                    const targetPosition = targetElement.offsetTop - navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }, 100);
-            }
+        // 简单的邮箱验证
+        if (!email || !email.includes('@')) {
+            formMessage.textContent = 'Please enter a valid email address.';
+            formMessage.style.color = '#f87171';
+            return;
         }
+        
+        // 模拟提交成功
+        formMessage.textContent = 'Thank you! You have been subscribed.';
+        formMessage.style.color = '#4ade80';
+        emailInput.value = '';
+        
+        // 3秒后清空成功消息
+        setTimeout(() => {
+            formMessage.textContent = '';
+        }, 3000);
     });
-
-    // ============================================
-    // 視窗大小改變時的處理
-    // ============================================
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            // 在桌面視圖時關閉移動端菜單
-            if (window.innerWidth > 768) {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            }
-        }, 250);
-    });
-
-})();
+}
