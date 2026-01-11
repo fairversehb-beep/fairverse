@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Technology Stack | FairVerse</title>
+    <link rel="stylesheet" href="assets/css/style.css"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar"><div class="nav-container"><div class="nav-logo"><a href=" " style="text-decoration: none;"><span class="logo-text">FairVerse</span></a ></div>
+            <ul class="nav-menu" id="nav-menu"><li class="nav-item"><a href="index.html" class="nav-link">Home</a ></li><li class="nav-item"><a href="vision.html" class="nav-link">Vision</a ></li><li class="nav-item"><a href="technology.html" class="nav-link active">Technology</a ></li><li class="nav-item"><a href="economy.html" class="nav-link">Economy</a ></li><li class="nav-item"><a href="roadmap.html" class="nav-link">Roadmap</a ></li><li class="nav-item"><a href="community.html" class="nav-link">Community</a ></li></ul>
+            <div class="language-switcher"><button class="lang-btn" id="lang-toggle"><span class="lang-code">EN</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg></button><div class="lang-dropdown" id="lang-dropdown"><a href="#" data-lang="en" class="lang-option">English</a ><a href="#" data-lang="zh" class="lang-option">中文</a ></div></div>
+            <div class="nav-toggle" id="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div></div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-hero-title" data-en="Technology Architecture" data-zh="技术架构">Technology Architecture</h1>
+            <p class="page-hero-subtitle" data-en="A robust, layered stack built for scale, transparency, and immersive experiences." data-zh="一个为规模、透明度和沉浸式体验而构建的强大分层技术栈。">A robust, layered stack built for scale, transparency, and immersive experiences.</p >
+        </div>
+    </section>
+
+    <section class="tech-architecture">
+        <div class="container">
+            <h2 class="section-title" data-en="Four-Layer Foundation" data-zh="四层基础架构">Four-Layer Foundation</h2>
+            <div class="architecture-layers">
+                <div class="layer-card" data-layer="1">
+                    <div class="layer-header"><div class="layer-icon">🛡️</div><h3 data-en="Infrastructure Layer" data-zh="基础设施层">Infrastructure Layer</h3></div>
+                    <p data-en="Distributed storage (IPFS/Arweave) & decentralized compute networks ensure resilience and user-owned data." data-zh="分布式存储与去中心化计算网络确保韧性及用户数据所有权。">Distributed storage (IPFS/Arweave) & decentralized compute networks.</p >
+                    <ul class="layer-tech-list"><li>IPFS + Arweave</li><li>Akash / Render</li><li>Filecoin</li></ul>
+                </div>
+                <div class="layer-card" data-layer="2">
+                    <div class="layer-header"><div class="layer-icon">⛓️</div><h3 data-en="Blockchain & Assets" data-zh="区块链与资产层">Blockchain & Assets</h3></div>
+                    <p data-en="Polygon & future H-chain for fast, low-cost transactions. All assets are true-user NFTs." data-zh="Polygon及未来的H公链实现快速低成本交易，所有资产均为用户真实拥有的NFT。">Polygon & future H-chain for fast, low-cost transactions.</p >
+                    <ul class="layer-tech-list"><li>Polygon PoS</li><li>ERC-721 / ERC-1155</li><li>Custom H-chain (2027+)</li></ul>
+                </div>
+                <div class="layer-card" data-layer="3">
+                    <div class="layer-header"><div class="layer-icon">⚙️</div><h3 data-en="Core Engine" data-zh="核心引擎层">Core Engine</h3></div>
+                    <p data-en="Open-source engines (Godot, Unreal 5) paired with AI tools for limitless world creation." data-zh="开源引擎与AI工具结合，实现无限世界创造。">Open-source engines paired with AI tools for limitless creation.</p >
+                    <ul class="layer-tech-list"><li>Godot 4.x / Unreal 5.4+</li><li>Stable Diffusion XL</li><li>Llama 3 / Grok API</li></ul>
+                </div>
+                <div class="layer-card" data-layer="4">
+                    <div class="layer-header"><div class="layer-icon">👁️</div><h3 data-en="Experience Layer" data-zh="体验接入层">Experience Layer</h3></div>
+                    <p data-en"VR/AR (OpenXR) & future Brain-Computer Interfaces for seamless immersion." data-zh="VR/AR及未来脑机接口实现无缝沉浸体验。">VR/AR (OpenXR) & future Brain-Computer Interfaces.</p >
+                    <ul class="layer-tech-list"><li>OpenXR (Quest, Vision Pro)</li><li>WebGL / Mobile Apps</li><li>BCI Experimental API</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="live-demo">
+        <div class="container">
+            <h2 class="section-title" data-en="Smart Contract Showcase" data-zh="智能合约展示">Smart Contract Showcase</h2>
+            <div class="demo-container">
+                <div class="code-block">
+                    <pre><code class="language-solidity">// FairVerse Land NFT Contract (Simplified)
+pragma solidity ^0.8.20;
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract FairVerseLand is ERC721 {
+    uint256 public nextTokenId;
+    mapping(uint256 => string) private _tokenURIs;
+
+    constructor() ERC721("FairVerse Land", "FVLAND") {}
+
+    function mintLand(address to, string memory tokenURI) public {
+        uint256 tokenId = nextTokenId++;
+        _safeMint(to, tokenId);
+        _setTokenURI(tokenId, tokenURI);
+    }
+
+    function _setTokenURI(uint256 tokenId, string memory uri) internal {
+        require(_exists(tokenId), "ERC721URIStorage: URI set of nonexistent token");
+        _tokenURIs[tokenId] = uri;
+    }
+}</code></pre>
+                </div>
+                <div class="demo-desc">
+                    <h3 data-en="Fully On-Chain Ownership" data-zh="完全链上所有权">Fully On-Chain Ownership</h3>
+                    <p data-en="Every piece of land in FairVerse is a unique NFT minted via audited smart contracts, guaranteeing verifiable ownership." data-zh="FairVerse中的每一块土地都是通过经审计的智能合约铸造的唯一NFT，保障可验证的所有权。">Every piece of land is a unique NFT, guaranteeing verifiable ownership.</p >
+                    <a href="#" class="btn btn-secondary" data-en="View on GitHub" data-zh="在GitHub上查看">View on GitHub</a >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container"><div class="footer-content"><div class="footer-brand"><h3>FairVerse</h3><p data-en="A Fair and Open Virtual World Platform" data-zh="一个公平开放的虚拟世界平台">A Fair and Open Virtual World Platform</p ></div>
+                <div class="footer-links"><h4 data-en="Quick Links" data-zh="快速链接">Quick Links</h4><ul><li><a href="index.html" data-en="Home" data-zh="首页">Home</a ></li><li><a href="vision.html" data-en="Vision" data-zh="愿景">Vision</a ></li><li><a href="technology.html" data-en="Technology" data-zh="技术">Technology</a ></li><li><a href="economy.html" data-en="Economy" data-zh="经济">Economy</a ></li></ul></div>
+                <div class="footer-social"><h4 data-en="Join Community" data-zh="加入社区">Join Community</h4>
+                    <div class="social-links"><a href="https://discord.gg/fairverse" target="_blank" class="social-link discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1913.3718-.2894a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.097.246.1951.3728.2894a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/></svg><span>Discord</span></a >
+                        <a href="https://twitter.com/fairverse" target="_blank" class="social-link twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span>X (Twitter)</span></a ></div></div></div>
+            <div class="footer-bottom"><p>&copy; 2024 FairVerse. All rights reserved.</p ></div>
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
