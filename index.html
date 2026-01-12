@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FairVerse - 公平公开的虚拟世界平台，基于区块链技术的去中心化元宇宙">
-    <title>FairVerse - Fair and Open Virtual World Platform</title>
+    <meta name="description" content="FairVerse - A fair and open virtual world platform.">
+    <title data-en="FairVerse - Fair and Open Virtual World Platform" data-zh="FairVerse - 公平公开的虚拟世界平台">FairVerse - Fair and Open Virtual World Platform</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 引导与协调谷歌翻译 -->
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en, zh">
+    <!-- 动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">FairVerse</span>
+                <a href=" " style="color:inherit;text-decoration:none;">
+                    <span class="logo-text" translate="no">FairVerse</span>
+                </a >
             </div>
             <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item"><a href=" " class="nav-link active">Home</a ></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Home</a ></li>
                 <li class="nav-item"><a href="#vision" class="nav-link">Vision</a ></li>
                 <li class="nav-item"><a href="#technology" class="nav-link">Technology</a ></li>
                 <li class="nav-item"><a href="tasks.html" class="nav-link">🚀 Task Center</a ></li>
@@ -25,9 +33,9 @@
                 <li class="nav-item"><a href="#roadmap" class="nav-link">Roadmap</a ></li>
                 <li class="nav-item"><a href="#community" class="nav-link">Community</a ></li>
             </ul>
-            <!-- 多语言切换器 -->
+            <!-- 语言切换器 -->
             <div class="language-switcher">
-                <button class="lang-btn" id="lang-toggle" aria-label="切换语言">
+                <button class="lang-btn" id="lang-toggle" aria-label="Toggle Language">
                     <span class="lang-code">EN</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                         <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/>
@@ -46,15 +54,12 @@
         </div>
     </nav>
 
-    <!-- 全屏英雄大图区 - 中央聚焦式 -->
     <section class="hero" id="home">
         <div class="hero-bg-canvas" id="hero-bg"></div>
         <div class="gradient-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="title-line" data-en="FairVerse: A Universe Built by You." data-zh="FairVerse：一个由你构筑的宇宙。">
-                    FairVerse: A Universe Built by You.
-                </span>
+                <span class="title-line" data-en="FairVerse: A Universe Built by You." data-zh="FairVerse：一个由你构筑的宇宙。">FairVerse: A Universe Built by You.</span>
             </h1>
             <p class="hero-description" data-en="The first truly open, fair, and user-owned virtual world platform. No gatekeepers, just pure creation." data-zh="首个真正开放、公平、用户拥有的虚拟世界平台。没有看门人，只有纯粹的创造。">
                 The first truly open, fair, and user-owned virtual world platform. No gatekeepers, just pure creation.
@@ -66,175 +71,147 @@
         </div>
     </section>
 
-    <!-- 问题与解决方案对比区 -->
     <section class="problem-solution" id="vision">
         <div class="container">
-            <h2 class="section-title">Traditional vs FairVerse</h2>
+            <h2 class="section-title" data-en="Traditional vs FairVerse" data-zh="传统平台 vs FairVerse">Traditional vs FairVerse</h2>
             <div class="comparison-grid">
                 <div class="comparison-card traditional">
                     <div class="card-header">
-                        <h3>Traditional Centralized Platforms</h3>
+                        <h3 data-en="Traditional Centralized Platforms" data-zh="传统中心化平台">Traditional Centralized Platforms</h3>
                         <span class="badge bad">❌</span>
                     </div>
                     <ul class="feature-list">
-                        <li>❌ Platform-controlled data and assets</li>
-                        <li>❌ Lack of transparency and fairness</li>
-                        <li>❌ High transaction fees</li>
-                        <li>❌ No true user ownership</li>
-                        <li>❌ Single point of failure risk</li>
+                        <li data-en="❌ Platform-controlled data and assets" data-zh="❌ 平台控制数据与资产">❌ Platform-controlled data and assets</li>
+                        <li data-en="❌ Lack of transparency and fairness" data-zh="❌ 缺乏透明度与公平性">❌ Lack of transparency and fairness</li>
+                        <li data-en="❌ High transaction fees" data-zh="❌ 高昂的交易费用">❌ High transaction fees</li>
+                        <li data-en="❌ No true user ownership" data-zh="❌ 用户没有真实所有权">❌ No true user ownership</li>
+                        <li data-en="❌ Single point of failure risk" data-zh="❌ 存在单点故障风险">❌ Single point of failure risk</li>
                     </ul>
                 </div>
                 <div class="comparison-card fairverse">
                     <div class="card-header">
-                        <h3>FairVerse Decentralized Platform</h3>
+                        <h3 data-en="FairVerse Decentralized Platform" data-zh="FairVerse 去中心化平台">FairVerse Decentralized Platform</h3>
                         <span class="badge good">✓</span>
                     </div>
                     <ul class="feature-list">
-                        <li>✓ Truly decentralized ownership</li>
-                        <li>✓ Fully transparent blockchain records</li>
-                        <li>✓ Low-cost smart contract transactions</li>
-                        <li>✓ Users have full asset control</li>
-                        <li>✓ No single point of failure, community governance</li>
+                        <li data-en="✓ Truly decentralized ownership" data-zh="✓ 真正的去中心化所有权">✓ Truly decentralized ownership</li>
+                        <li data-en="✓ Fully transparent blockchain records" data-zh="✓ 完全透明的区块链记录">✓ Fully transparent blockchain records</li>
+                        <li data-en="✓ Low-cost smart contract transactions" data-zh="✓ 低成本的智能合约交易">✓ Low-cost smart contract transactions</li>
+                        <li data-en="✓ Users have full asset control" data-zh="✓ 用户拥有完整的资产控制权">✓ Users have full asset control</li>
+                        <li data-en="✓ No single point of failure, community governance" data-zh="✓ 无单点故障，社区治理">✓ No single point of failure, community governance</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 核心技术图标区域 -->
     <section class="technologies" id="technology">
         <div class="container">
-            <h2 class="section-title">Core Technologies</h2>
-            <p class="section-subtitle">Powerful tech stack for the next-generation virtual world</p >
+            <h2 class="section-title" data-en="Core Technologies" data-zh="核心技术">Core Technologies</h2>
+            <p class="section-subtitle" data-en="Powerful tech stack for the next-generation virtual world" data-zh="为下一代虚拟世界打造的强大技术栈">Powerful tech stack for the next-generation virtual world</p >
             <div class="tech-grid">
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                        </svg>
-                    </div>
-                    <h3>Blockchain</h3>
-                    <p>Decentralized trust mechanism ensuring asset security and transparent transactions</p >
+                    <div class="tech-icon">⛓️</div>
+                    <h3 data-en="Blockchain" data-zh="区块链">Blockchain</h3>
+                    <p data-en="Decentralized trust mechanism ensuring asset security and transparent transactions." data-zh="去中心化的信任机制，确保资产安全与交易透明。">Decentralized trust mechanism ensuring asset security and transparent transactions.</p >
                 </div>
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                    </div>
-                    <h3>Artificial Intelligence</h3>
-                    <p>Intelligent NPCs and dynamic world generation for rich interactive experiences</p >
+                    <div class="tech-icon">🤖</div>
+                    <h3 data-en="Artificial Intelligence" data-zh="人工智能">Artificial Intelligence</h3>
+                    <p data-en="Intelligent NPCs and dynamic world generation for rich interactive experiences." data-zh="智能NPC与动态世界生成，带来丰富的交互体验。">Intelligent NPCs and dynamic world generation for rich interactive experiences.</p >
                 </div>
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
-                            <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"></path>
-                        </svg>
-                    </div>
-                    <h3>VR/AR Integration</h3>
-                    <p>Immersive virtual and augmented reality breaking the boundary between real and virtual</p >
+                    <div class="tech-icon">🥽</div>
+                    <h3 data-en="VR/AR Integration" data-zh="VR/AR 集成">VR/AR Integration</h3>
+                    <p data-en="Immersive virtual and augmented reality breaking the boundary between real and virtual." data-zh="沉浸式的虚拟与增强现实，打破虚实界限。">Immersive virtual and augmented reality breaking the boundary between real and virtual.</p >
                 </div>
                 <div class="tech-card">
-                    <div class="tech-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <h3>Open Source Engine</h3>
-                    <p>Open and transparent development framework supporting community building and innovation</p >
+                    <div class="tech-icon">🛠️</div>
+                    <h3 data-en="Open Source Engine" data-zh="开源引擎">Open Source Engine</h3>
+                    <p data-en="Open and transparent development framework supporting community building and innovation." data-zh="开放透明的开发框架，支持社区构建与创新。">Open and transparent development framework supporting community building and innovation.</p >
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== 新增：技术演化路径时间轴 ========== -->
+    <!-- 技术路径时间轴 -->
     <section class="tech-timeline-section" id="tech-evolution">
         <div class="container">
-            <h2 class="section-title">Path to the Mindverse</h2>
-            <p class="section-subtitle">From open creation to seamless thought interaction</p >
+            <h2 class="section-title" data-en="Path to the Mindverse" data-zh="通往思维宇宙之路">Path to the Mindverse</h2>
+            <p class="section-subtitle" data-en="From open creation to seamless thought interaction" data-zh="从开源创造到无缝思维交互">From open creation to seamless thought interaction</p >
             <div class="timeline-container">
                 <div id="techTimeline">
-                    <!-- 内容由 techTimeline.js 动态生成 -->
+                    <!-- 由 techTimeline.js 生成 -->
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 经济模式简介 -->
     <section class="economy" id="economy">
         <div class="container">
-            <h2 class="section-title">Economic Model</h2>
-            <p class="section-subtitle">Sustainable decentralized economic ecosystem</p >
+            <h2 class="section-title" data-en="Economic Model" data-zh="经济模型">Economic Model</h2>
+            <p class="section-subtitle" data-en="Sustainable decentralized economic ecosystem" data-zh="可持续的去中心化经济生态">Sustainable decentralized economic ecosystem</p >
             <div class="economy-content">
                 <div class="economy-feature">
                     <div class="economy-number">01</div>
-                    <h3>Token Economy</h3>
-                    <p>Fair token distribution mechanism rewarding early contributors and active users</p >
+                    <h3 data-en="Token Economy" data-zh="通证经济">Token Economy</h3>
+                    <p data-en="Fair token distribution mechanism rewarding early contributors and active users." data-zh="公平的通证分发机制，奖励早期贡献者和活跃用户。">Fair token distribution mechanism rewarding early contributors and active users.</p >
                 </div>
                 <div class="economy-feature">
                     <div class="economy-number">02</div>
-                    <h3>NFT Assets</h3>
-                    <p>Unique digital asset ownership supporting free trading and creation</p >
+                    <h3 data-en="NFT Assets" data-zh="NFT资产">NFT Assets</h3>
+                    <p data-en="Unique digital asset ownership supporting free trading and creation." data-zh="独特的数字资产所有权，支持自由交易与创造。">Unique digital asset ownership supporting free trading and creation.</p >
                 </div>
                 <div class="economy-feature">
                     <div class="economy-number">03</div>
-                    <h3>Decentralized Governance</h3>
-                    <p>Community voting to decide platform development direction, realizing true user autonomy</p >
+                    <h3 data-en="Decentralized Governance" data-zh="去中心化治理">Decentralized Governance</h3>
+                    <p data-en="Community voting to decide platform development direction, realizing true user autonomy." data-zh="社区投票决定平台发展方向，实现真正的用户自治。">Community voting to decide platform development direction, realizing true user autonomy.</p >
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 路线图预览 -->
     <section class="roadmap-preview" id="roadmap">
         <div class="container">
-            <h2 class="section-title">Development Roadmap</h2>
+            <h2 class="section-title" data-en="Development Roadmap" data-zh="发展路线图">Development Roadmap</h2>
             <div class="roadmap-timeline">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Phase 1: Infrastructure</h3>
-                        <p>Blockchain network deployment, core smart contract development</p >
+                        <h3 data-en="Phase 1: Infrastructure" data-zh="第一阶段：基础搭建">Phase 1: Infrastructure</h3>
+                        <p data-en="Blockchain network deployment, core smart contract development." data-zh="区块链网络部署，核心智能合约开发。">Blockchain network deployment, core smart contract development.</p >
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Phase 2: Test Network</h3>
-                        <p>Public testing, community feedback collection and optimization</p >
+                        <h3 data-en="Phase 2: Test Network" data-zh="第二阶段：测试网络">Phase 2: Test Network</h3>
+                        <p data-en="Public testing, community feedback collection and optimization." data-zh="公开测试，收集社区反馈并优化。">Public testing, community feedback collection and optimization.</p >
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>Phase 3: Mainnet Launch</h3>
-                        <p>Official release, ecosystem building launch</p >
+                        <h3 data-en="Phase 3: Mainnet Launch" data-zh="第三阶段：主网上线">Phase 3: Mainnet Launch</h3>
+                        <p data-en="Official release, ecosystem building launch." data-zh="正式发布，启动生态建设。">Official release, ecosystem building launch.</p >
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 即将到来 - 行动号召区 -->
     <section class="coming-soon" id="coming-soon">
         <div class="container">
             <div class="coming-soon-content">
-                <h2 class="coming-soon-title">Coming Soon</h2>
-                <p class="coming-soon-description">
-                    Become a member of the FairVerse community to get the latest news and early access opportunities
+                <h2 class="coming-soon-title" data-en="Coming Soon" data-zh="即将到来">Coming Soon</h2>
+                <p class="coming-soon-description" data-en="Become a member of the FairVerse community to get the latest news and early access opportunities." data-zh="加入FairVerse社区，获取最新动态和早期体验机会。">
+                    Become a member of the FairVerse community to get the latest news and early access opportunities.
                 </p >
                 <form class="email-form" id="email-form">
                     <div class="form-group">
-                        <input 
-                            type="email" 
-                            id="email-input" 
-                            class="email-input" 
-                            placeholder="Enter your email address"
-                            required
-                        >
+                        <input type="email" id="email-input" class="email-input" placeholder="Enter your email address" required>
                         <button type="submit" class="submit-btn">
-                            <span>Subscribe</span>
+                            <span data-en="Subscribe" data-zh="订阅">Subscribe</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"></path>
                             </svg>
@@ -246,50 +223,43 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
     <footer class="footer" id="community">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>FairVerse</h3>
-                    <p>A Fair and Open Virtual World Platform</p >
+                    <h3 translate="no">FairVerse</h3>
+                    <p data-en="A Fair and Open Virtual World Platform" data-zh="一个公平开放的虚拟世界平台">A Fair and Open Virtual World Platform</p >
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-en="Quick Links" data-zh="快速链接">Quick Links</h4>
                     <ul>
-                        <li><a href="#vision">Vision</a ></li>
-                        <li><a href="#technology">Technology</a ></li>
-                        <li><a href="#economy">Economy</a ></li>
-                        <li><a href="#roadmap">Roadmap</a ></li>
+                        <li><a href=" " data-en="Vision" data-zh="愿景">Vision</a ></li>
+                        <li><a href="#technology" data-en="Technology" data-zh="技术">Technology</a ></li>
+                        <li><a href="#economy" data-en="Economy" data-zh="经济">Economy</a ></li>
+                        <li><a href="#roadmap" data-en="Roadmap" data-zh="路线图">Roadmap</a ></li>
                     </ul>
                 </div>
                 <div class="footer-social">
-                    <h4>Join Community</h4>
+                    <h4 data-en="Join Community" data-zh="加入社区">Join Community</h4>
                     <div class="social-links">
                         <a href="https://discord.gg/wwqDQcxFUx" target="_blank" rel="noopener noreferrer" class="social-link discord">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1913.3718-.2894a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.097.246.1951.3728.2894a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1913.3718-.2894a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.097.246.1951.3728.2894a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/></svg>
                             <span>Discord</span>
                         </a >
                         <a href="https://twitter.com/fairverse" target="_blank" rel="noopener noreferrer" class="social-link twitter">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                             <span>X (Twitter)</span>
                         </a >
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FairVerse. All rights reserved.</p >
+                <p>&copy; 2024 <span translate="no">FairVerse</span>. <span data-en="All rights reserved." data-zh="版权所有。">All rights reserved.</span></p >
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
-    <!-- 新增：技术路径时间轴动画脚本 -->
     <script src="assets/js/tech-timeline.js"></script>
 </body>
 </html>

@@ -1,40 +1,56 @@
-// 技术演化路径数据
+// assets/js/tech-timeline.js - 技术路径时间轴 (双语支持版)
+
+// 技术演化路径数据 (支持双语)
 const timelineData = [
     {
-        year: "Now - 2025",
-        title: "Open Creation Era",
+        year: { en: "Now - 2025", zh: "现在 - 2025年" },
+        title: { en: "Open Creation Era", zh: "开源创造时代" },
         icon: "🛠️",
-        desc: "Build worlds with open-source engines (Godot/Unity) & AI tools. Democratizing 3D creation.",
+        description: { 
+            en: "Build worlds with open-source engines (Godot/Unity) & AI tools. Democratizing 3D creation.", 
+            zh: "使用开源引擎(Godot/Unity)与AI工具构建世界。让3D创造大众化。" 
+        },
         tech: ["Godot Engine", "Unity", "AI-Assisted Design", "3D Modeling"]
     },
     {
-        year: "2025 - 2026",
-        title: "Full Immersion",
+        year: { en: "2025 - 2026", zh: "2025 - 2026年" },
+        title: { en: "Full Immersion", zh: "完全沉浸" },
         icon: "🥽",
-        desc: "Seamless VR/AR integration via OpenXR. Work, socialize, and play in truly immersive spaces.",
+        description: { 
+            en: "Seamless VR/AR integration via OpenXR. Work, socialize, and play in truly immersive spaces.", 
+            zh: "通过OpenXR实现无缝VR/AR集成。在真正沉浸的空间中工作、社交和娱乐。" 
+        },
         tech: ["OpenXR", "Standalone VR", "Spatial Computing", "Haptic Feedback"]
     },
     {
-        year: "2027 - 2028",
-        title: "Mind Interface (Phase 1)",
+        year: { en: "2027 - 2028", zh: "2027 - 2028年" },
+        title: { en: "Mind Interface (Phase 1)", zh: "思维接口 (第一阶段)" },
         icon: "🧠",
-        desc: "Integrate non-invasive BCI (EEG) for basic control, meditation, and focus-enhanced experiences.",
+        description: { 
+            en: "Integrate non-invasive BCI (EEG) for basic control, meditation, and focus-enhanced experiences.", 
+            zh: "集成非侵入式脑机接口(EEG)，实现基础控制、冥想和增强专注力的体验。" 
+        },
         tech: ["EEG BCI", "Neuro-Feedback", "Mindful Training", "Neuralink API"]
     },
     {
-        year: "2030+",
-        title: "Consensus Reality",
+        year: { en: "2030+", zh: "2030年+" },
+        title: { en: "Consensus Reality", zh: "共识现实" },
         icon: "🌌",
-        desc: "Advanced BCI research for seamless thought-to-action and shared virtual consciousness.",
+        description: { 
+            en: "Advanced BCI research for seamless thought-to-action and shared virtual consciousness.", 
+            zh: "研究高级脑机接口，实现无缝的思行合一与共享虚拟意识。" 
+        },
         tech: ["Next-gen BCI", "Sensory Fusion", "Decentralized Consciousness"]
     }
 ];
 
-// 初始化技术时间轴
 function initTechTimeline() {
     const container = document.getElementById('techTimeline');
     if (!container) return;
 
+    // 获取当前语言
+    const currentLang = localStorage.getItem('fairverse-lang') || 'en';
+    
     // 清空容器
     container.innerHTML = '';
 
@@ -46,21 +62,26 @@ function initTechTimeline() {
         itemEl.style.opacity = '0';
         itemEl.style.transform = 'translateY(30px)';
         
+        // 根据当前语言选择文本
+        const year = item.year[currentLang] || item.year.en;
+        const title = item.title[currentLang] || item.title.en;
+        const description = item.description[currentLang] || item.description.en;
+        
         itemEl.innerHTML = `
             <div class="timeline-dot">${item.icon}</div>
             <div class="timeline-content">
-                <div class="timeline-year">${item.year}</div>
-                <h3>${item.title}</h3>
-                <p>${item.desc}</p >
+                <div class="timeline-year">${year}</div>
+                <h3>${title}</h3>
+                <p>${description}</p >
                 <div class="tech-tags">
-                    ${item.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                    ${item.tech.map(t => `<span class="tech-tag" translate="no">${t}</span>`).join('')}
                 </div>
             </div>
         `;
         container.appendChild(itemEl);
     });
 
-    // 使用 GSAP 动画（确保已引入GSAP库）
+    // 使用 GSAP 动画
     if (typeof gsap !== 'undefined') {
         gsap.utils.toArray('.timeline-item').forEach((item, i) => {
             gsap.to(item, {
@@ -76,7 +97,7 @@ function initTechTimeline() {
             });
         });
     } else {
-        // 如果GSAP未加载，使用简单淡入
+        // 备用动画
         document.querySelectorAll('.timeline-item').forEach((item, i) => {
             setTimeout(() => {
                 item.style.opacity = '1';
@@ -93,6 +114,11 @@ if (document.readyState === 'loading') {
 } else {
     initTechTimeline();
 }
+
+// 监听语言切换事件（当其他脚本切换语言时，重绘时间轴）
+document.addEventListener('languageChanged', function(e) {
+    initTechTimeline();
+});
 
 // 导出函数供全局使用
 window.initTechTimeline = initTechTimeline;

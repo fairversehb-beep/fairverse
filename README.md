@@ -190,7 +190,7 @@ setTimeout(() => {
 ## 📧 聯繫方式
 
 - Discord: [FairVerse Discord](https://discord.gg/fairverse)
-- X (Twitter): [@fairverse](https://twitter.com/fairverse)
+- X (Twitter): [@fairverse](https://twitter.com/fairverseHB)
 
 ---
 

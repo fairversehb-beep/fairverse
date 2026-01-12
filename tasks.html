@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Center - FairVerse</title>
+    <title data-en="Task Center - FairVerse" data-zh="任务中心 - FairVerse">Task Center - FairVerse</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 协调谷歌翻译 -->
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en, zh">
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href=" " style="color: inherit; text-decoration: none;">
-                    <span class="logo-text">FairVerse</span>
+                <a href=" " style="color:inherit;text-decoration:none;">
+                    <span class="logo-text" translate="no">FairVerse</span>
                 </a >
             </div>
             <ul class="nav-menu" id="nav-menu">
@@ -27,6 +29,19 @@
                 <li class="nav-item"><a href="index.html#roadmap" class="nav-link">Roadmap</a ></li>
                 <li class="nav-item"><a href="index.html#community" class="nav-link">Community</a ></li>
             </ul>
+            <!-- 语言切换器（与首页一致） -->
+            <div class="language-switcher">
+                <button class="lang-btn" id="lang-toggle" aria-label="Toggle Language">
+                    <span class="lang-code">EN</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <a href="#" data-lang="en" class="lang-option">English</a >
+                    <a href="#" data-lang="zh" class="lang-option">中文</a >
+                </div>
+            </div>
             <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -35,46 +50,45 @@
         </div>
     </nav>
 
-    <!-- 任务中心主内容 -->
     <main class="task-center-container">
         <section class="task-hero">
-            <h1>Build FairVerse, Earn Rewards</h1>
-            <p>Complete tasks to contribute to the ecosystem and earn $H Token & exclusive NFTs. Every builder matters.</p >
-            <button class="btn btn-primary" id="connectWalletBtn">🔗 Connect Wallet to Start</button>
+            <h1 data-en="Build FairVerse, Earn Rewards" data-zh="共建 FairVerse，赚取奖励">Build FairVerse, Earn Rewards</h1>
+            <p data-en="Complete tasks to contribute to the ecosystem and earn $H Token & exclusive NFTs. Every builder matters." data-zh="完成任务，为生态做贡献，赚取 $H 通证和独家NFT。每一位建设者都至关重要。">
+                Complete tasks to contribute to the ecosystem and earn <span translate="no">$H Token</span> & exclusive NFTs. Every builder matters.
+            </p >
+            <button class="btn btn-primary" id="connectWalletBtn">🔗 <span data-en="Connect Wallet to Start" data-zh="连接钱包以开始">Connect Wallet to Start</span></button>
         </section>
 
         <section class="task-main container">
             <div class="task-layout">
-                <!-- 侧边栏：筛选和用户面板 -->
                 <aside class="task-sidebar">
                     <div class="task-filter-card">
-                        <h3>Filter Tasks</h3>
+                        <h3 data-en="Filter Tasks" data-zh="筛选任务">Filter Tasks</h3>
                         <div class="filter-option">
                             <input type="checkbox" id="filter-open" checked>
-                            <label for="filter-open">Open for Submission</label>
+                            <label for="filter-open" data-en="Open for Submission" data-zh="可提交">Open for Submission</label>
                         </div>
                         <div class="filter-option">
-                            <h4>Reward Type</h4>
+                            <h4 data-en="Reward Type" data-zh="奖励类型">Reward Type</h4>
                             <select id="rewardFilter">
-                                <option value="all">All</option>
-                                <option value="token">$H Token Only</option>
-                                <option value="nft">Includes NFT</option>
+                                <option value="all" data-en="All" data-zh="全部">All</option>
+                                <option value="token" data-en="$H Token Only" data-zh="仅 $H 通证">$H Token Only</option>
+                                <option value="nft" data-en="Includes NFT" data-zh="包含 NFT">Includes NFT</option>
                             </select>
                         </div>
                     </div>
                     <div class="user-task-panel">
-                        <h3>My Tasks</h3>
+                        <h3 data-en="My Tasks" data-zh="我的任务">My Tasks</h3>
                         <div id="myTasksList">
-                            <p class="empty-state">Connect your wallet to view accepted tasks.</p >
+                            <p class="empty-state" data-en="Connect your wallet to view accepted tasks." data-zh="连接钱包以查看已接受的任务。">Connect your wallet to view accepted tasks.</p >
                         </div>
                     </div>
                 </aside>
 
-                <!-- 主区域：任务列表 -->
                 <div class="task-list-container">
-                    <h2>Available Tasks</h2>
+                    <h2 data-en="Available Tasks" data-zh="可用任务">Available Tasks</h2>
                     <div class="task-list" id="taskList">
-                        <!-- 任务卡片由JS动态生成 -->
+                        <!-- 任务卡片由 script.js 动态生成 -->
                     </div>
                 </div>
             </div>
@@ -85,16 +99,18 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>FairVerse</h3>
-                    <p>A Fair and Open Virtual World Platform</p >
+                    <h3 translate="no">FairVerse</h3>
+                    <p data-en="A Fair and Open Virtual World Platform" data-zh="一个公平开放的虚拟世界平台">A Fair and Open Virtual World Platform</p >
                 </div>
                 <div class="footer-social">
-                    <h4>Need Help?</h4>
-                    <p>Submit your work & get help in our <a href="https://discord.gg/wwqDQcxFUx" target="_blank" style="color:#a5b4fc;">Discord</a > community.</p >
+                    <h4 data-en="Need Help?" data-zh="需要帮助？">Need Help?</h4>
+                    <p data-en="Submit your work & get help in our Discord community." data-zh="提交您的作品并在我们的 Discord 社区获取帮助。">
+                        Submit your work & get help in our <a href="https://discord.gg/wwqDQcxFUx" target="_blank" style="color:#a5b4fc;">Discord</a > community.
+                    </p >
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 FairVerse. All rights reserved.</p >
+                <p>&copy; 2024 <span translate="no">FairVerse</span>. <span data-en="All rights reserved." data-zh="版权所有。">All rights reserved.</span></p >
             </div>
         </div>
     </footer>
