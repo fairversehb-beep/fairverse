@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Center - FairVerse</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href=" " style="color: inherit; text-decoration: none;">
+                    <span class="logo-text">FairVerse</span>
+                </a >
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a ></li>
+                <li class="nav-item"><a href="index.html#vision" class="nav-link">Vision</a ></li>
+                <li class="nav-item"><a href="index.html#technology" class="nav-link">Technology</a ></li>
+                <li class="nav-item"><a href="tasks.html" class="nav-link active">🚀 Task Center</a ></li>
+                <li class="nav-item"><a href="index.html#economy" class="nav-link">Economy</a ></li>
+                <li class="nav-item"><a href="index.html#roadmap" class="nav-link">Roadmap</a ></li>
+                <li class="nav-item"><a href="index.html#community" class="nav-link">Community</a ></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 任务中心主内容 -->
+    <main class="task-center-container">
+        <section class="task-hero">
+            <h1>Build FairVerse, Earn Rewards</h1>
+            <p>Complete tasks to contribute to the ecosystem and earn $H Token & exclusive NFTs. Every builder matters.</p >
+            <button class="btn btn-primary" id="connectWalletBtn">🔗 Connect Wallet to Start</button>
+        </section>
+
+        <section class="task-main container">
+            <div class="task-layout">
+                <!-- 侧边栏：筛选和用户面板 -->
+                <aside class="task-sidebar">
+                    <div class="task-filter-card">
+                        <h3>Filter Tasks</h3>
+                        <div class="filter-option">
+                            <input type="checkbox" id="filter-open" checked>
+                            <label for="filter-open">Open for Submission</label>
+                        </div>
+                        <div class="filter-option">
+                            <h4>Reward Type</h4>
+                            <select id="rewardFilter">
+                                <option value="all">All</option>
+                                <option value="token">$H Token Only</option>
+                                <option value="nft">Includes NFT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="user-task-panel">
+                        <h3>My Tasks</h3>
+                        <div id="myTasksList">
+                            <p class="empty-state">Connect your wallet to view accepted tasks.</p >
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- 主区域：任务列表 -->
+                <div class="task-list-container">
+                    <h2>Available Tasks</h2>
+                    <div class="task-list" id="taskList">
+                        <!-- 任务卡片由JS动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>FairVerse</h3>
+                    <p>A Fair and Open Virtual World Platform</p >
+                </div>
+                <div class="footer-social">
+                    <h4>Need Help?</h4>
+                    <p>Submit your work & get help in our <a href="https://discord.gg/wwqDQcxFUx" target="_blank" style="color:#a5b4fc;">Discord</a > community.</p >
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FairVerse. All rights reserved.</p >
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
